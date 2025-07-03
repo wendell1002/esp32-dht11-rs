@@ -81,7 +81,7 @@ where
         let mut buf = [0; 5];
         for idx in 0..5 {
             buf[idx] = self.read_byte();
-            if (buf[idx] == ERROR_TIMEOUT) {
+            if buf[idx] == ERROR_TIMEOUT {
                 return Err(SensorError::Timeout);
             }
         }
@@ -90,7 +90,7 @@ where
             .wrapping_add(buf[2])
             .wrapping_add(buf[3]);
 
-        if (buf[4] == (sum & 0xFF)) {
+        if buf[4] == (sum & 0xFF) {
             return Ok(buf); // Success
         } else {
             return Err(SensorError::ChecksumMismatch);
