@@ -2,14 +2,35 @@
 edition = "2021"
 name = "esp32-dht11-rs"
 version = "0.1.0"
+keywords = ["embedded", "no-std", "dht11"]
 
+[lib]
+name = "esp32_dht11_rs"
+path = "src/lib.rs"
+test = false
+bench = false
+
+
+[package.metadata.docs.rs]
+cargo-args = ["-Z", "build-std=core"]
+default-target = "riscv32imc-unknown-none-elf"
+features = ["esp32c3"]
 
 [dependencies]
 embedded-hal = "1.0.0"
-esp-hal = { version = "=1.0.0-beta.1" }
+esp-hal = { version = "1.0.0-beta.1", features = ["unstable"] }
+
+esp32 = { version = "0.37.0" }
+esp32c2 = { version = "0.26.0" }
+esp32c3 = { version = "0.29.0" }
+esp32c6 = { version = "0.20.0" }
+esp32h2 = { version = "0.16.0" }
+esp32s2 = { version = "0.28.0" }
+esp32s3 = { version = "0.32.0" }
 
 [features]
-default = []
+
+default = ["esp32c3"]
 esp32 = ["esp-hal/esp32"]
 esp32c2 = ["esp-hal/esp32c2"]
 esp32c3 = ["esp-hal/esp32c3"]
