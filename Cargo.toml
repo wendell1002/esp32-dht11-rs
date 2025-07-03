@@ -1,8 +1,14 @@
 [package]
+authors = ["wendell <3461739@qq.com>"]
 edition = "2021"
 name = "esp32-dht11-rs"
-version = "0.1.0"
+version = "0.1.1"
 keywords = ["embedded", "no-std", "dht11"]
+description = "A Rust crate that reads temperature and humidity data from the DHT11 sensors for esp32 series. "
+license = "MIT"
+repository = "https://github.com/wendell1002/esp32-dht11-rs"
+homepage = "https://github.com/wendell1002/esp32-dht11-rs"
+documentation = "https://docs.rs/esp32-dht11-rs"
 
 [lib]
 name = "esp32_dht11_rs"
