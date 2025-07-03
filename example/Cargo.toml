@@ -8,9 +8,22 @@ name = "example"
 path = "./src/main.rs"
 
 [dependencies]
+esp-hal = { version = "=1.0.0-beta.1", features = [
+    "esp32c3",
+    "log-04",
+    "unstable",
+] }
+esp32_dht11_rs = { package = "esp32-dht11-rs", git = "https://github.com/wendell1002/esp32-dht11-rs.git", features = [
+    "esp32c3",
+] }
 
-esp32_dht11_rs = { version = "*", features = ["esp32c3"] }
-
+esp-backtrace = { version = "0.16.0", features = [
+    "esp32c3",
+    "exception-handler",
+    "panic-handler",
+    "println",
+] }
+esp-println = { version = "0.14.0", features = ["esp32c3", "log-04"] }
 [profile.dev]
 # Rust debug is too slow.
 # For debug builds always builds with some optimization
