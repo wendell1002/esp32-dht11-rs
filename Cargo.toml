@@ -1,0 +1,38 @@
+[package]
+edition = "2021"
+name = "esp32-dht11-rs"
+version = "0.1.0"
+
+
+[dependencies]
+embedded-hal = "1.0.0"
+esp-hal = { version = "=1.0.0-beta.1", features = [
+  "esp32c3",
+  "log-04",
+  "unstable",
+] }
+
+[features]
+default = []
+esp32 = []
+esp32c2 = []
+esp32c3 = []
+esp32c6 = []
+esp32h2 = []
+esp32p4 = []
+esp32s2 = []
+esp32s3 = []
+
+[profile.dev]
+# Rust debug is too slow.
+# For debug builds always builds with some optimization
+opt-level = "s"
+
+[profile.release]
+codegen-units = 1        # LLVM can perform better optimizations using a single thread
+debug = 2
+debug-assertions = false
+incremental = false
+lto = 'fat'
+opt-level = 's'
+overflow-checks = false
