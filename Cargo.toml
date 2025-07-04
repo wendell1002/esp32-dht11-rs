@@ -2,7 +2,7 @@
 authors = ["wendell <3461739@qq.com>"]
 edition = "2021"
 name = "esp32-dht11-rs"
-version = "0.1.1"
+version = "0.1.2"
 keywords = ["embedded", "no-std", "dht11"]
 description = "A Rust crate that reads temperature and humidity data from the DHT11 sensors for esp32 series. "
 license = "MIT"
@@ -24,15 +24,17 @@ features = ["esp32c3"]
 
 [dependencies]
 embedded-hal = "1.0.0"
-esp-hal = { version = "1.0.0-beta.1", features = ["unstable"] }
+esp-hal = { version = "1.0.0-beta.1", features = [
+    "unstable",
+], default-features = false }
 
-esp32 = { version = "0.37.0" }
-esp32c2 = { version = "0.26.0" }
-esp32c3 = { version = "0.29.0" }
-esp32c6 = { version = "0.20.0" }
-esp32h2 = { version = "0.16.0" }
-esp32s2 = { version = "0.28.0" }
-esp32s3 = { version = "0.32.0" }
+# esp32 = { version = "0.37.0" }
+# esp32c2 = { version = "0.26.0" }
+# esp32c3 = { version = "0.29.0" }
+# esp32c6 = { version = "0.20.0" }
+# esp32h2 = { version = "0.16.0" }
+# esp32s2 = { version = "0.28.0" }
+# esp32s3 = { version = "0.32.0" }
 
 [features]
 
