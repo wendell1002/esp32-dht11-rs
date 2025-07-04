@@ -442,37 +442,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "esp32"
-version = "0.37.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83ddfdb413ef0739d84bd3fce771e6e0feb6457ac1bcdd7a1dcd6326061e919d"
-dependencies = [
- "vcell",
-]
-
-[[package]]
 name = "esp32-dht11-rs"
-version = "0.1.0"
-source = "git+https://github.com/wendell1002/esp32-dht11-rs.git#fc364cbd041375d5f547901a2c7c04331635a5b6"
+version = "0.1.2"
 dependencies = [
  "embedded-hal 1.0.0",
  "esp-hal",
- "esp32",
- "esp32c2",
- "esp32c3",
- "esp32c6",
- "esp32h2",
- "esp32s2",
- "esp32s3",
-]
-
-[[package]]
-name = "esp32c2"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "14ec669dc34787e73c8a7d99059fcdbd800cb0699c2ea9cd0a3d99cb5e9caefb"
-dependencies = [
- "vcell",
 ]
 
 [[package]]
@@ -482,42 +456,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "24c0b2a8e8efa1755a28ca3ef54c85436f76531ba93dc79b55d5330349d067d7"
 dependencies = [
  "critical-section",
- "vcell",
-]
-
-[[package]]
-name = "esp32c6"
-version = "0.20.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c8009092b2a8f41532ce836ea7403b657eca7cd396c4513c650ade648831ed76"
-dependencies = [
- "vcell",
-]
-
-[[package]]
-name = "esp32h2"
-version = "0.16.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "03f683882d3713ec41379980406117b15fb48c2be8d5acdf1795ecb5fe9b6e41"
-dependencies = [
- "vcell",
-]
-
-[[package]]
-name = "esp32s2"
-version = "0.28.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d4391e38b14eb59a675e816598bde7d9b8c8f43a695a284bd97bcd0cf3092404"
-dependencies = [
- "vcell",
-]
-
-[[package]]
-name = "esp32s3"
-version = "0.32.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "27a4c6fd31207a297fc29d2b8f4da27facf45f8c83041f7c0f978aa65ab367c9"
-dependencies = [
  "vcell",
 ]
 
