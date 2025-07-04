@@ -17,14 +17,11 @@ test = false
 bench = false
 
 
-[package.metadata.docs.rs]
-cargo-args = ["-Z", "build-std=core"]
-default-target = "riscv32imc-unknown-none-elf"
-features = ["esp32c3"]
-
 [dependencies]
 embedded-hal = "1.0.0"
-esp-hal = { version = "1.0.0-beta.1", features = ["unstable"] }
+esp-hal = { version = "1.0.0-beta.1", features = [
+    "unstable",
+], default-features = false }
 
 # esp32 = { version = "0.37.0" }
 # esp32c2 = { version = "0.26.0" }
@@ -35,8 +32,7 @@ esp-hal = { version = "1.0.0-beta.1", features = ["unstable"] }
 # esp32s3 = { version = "0.32.0" }
 
 [features]
-
-# default = ["esp32c3"]
+default = ["esp32c3"]
 esp32 = ["esp-hal/esp32"]
 esp32c2 = ["esp-hal/esp32c2"]
 esp32c3 = ["esp-hal/esp32c3"]

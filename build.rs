@@ -22,13 +22,7 @@ fn linker_be_nice() {
                     eprintln!("💡 Is the linker script `linkall.x` missing?");
                     eprintln!();
                 }
-                "esp_wifi_preempt_enable"
-                | "esp_wifi_preempt_yield_task"
-                | "esp_wifi_preempt_task_create" => {
-                    eprintln!();
-                    eprintln!("💡 `esp-wifi` has no scheduler enabled. Make sure you have the `builtin-scheduler` feature enabled, or that you provide an external scheduler.");
-                    eprintln!();
-                }
+                
                 "embedded_test_linker_file_not_added_to_rustflags" => {
                     eprintln!();
                     eprintln!("💡 `embedded-test` not found - make sure `embedded-test.x` is added as a linker script for tests");
