@@ -1,7 +1,7 @@
 #![no_std]
-
 use embedded_hal::delay::DelayNs;
-use esp_hal::gpio::{DriveMode, Flex, InputConfig, OutputConfig, Pin};
+use esp_hal::gpio::{AnyPin, DriveMode, Flex, InputConfig, OutputConfig, Pin};
+use esp_hal::peripheral::Peripheral;
 use esp_hal::time::Instant;
 
 #[derive(Debug)]
@@ -29,12 +29,14 @@ impl<'a, D> DHT11<'a, D>
 where
     D: DelayNs,
 {
-    pub fn new(pin: impl Pin + 'a, delay: D) -> Self {
+    pub fn new(pin: impl Peripheral<P = impl Into<AnyPin>> + 'a, delay: D) -> Self {
         let mut pin = Flex::new(pin);
         let out_config = OutputConfig::default().with_drive_mode(DriveMode::OpenDrain);
         pin.apply_output_config(&out_config);
         let input_config = InputConfig::default();
         pin.apply_input_config(&input_config);
+        pin.set_as_open_drain(esp_hal::gpio::Pull::None);
+        // pin.set_high();
         Self { pin, delay }
     }
 
@@ -55,22 +57,22 @@ where
     }
 
     fn read_raw(&mut self) -> Result<[u8; 5], SensorError> {
-        self.pin.set_output_enable(true);
+        self.pin.set_as_output();
+        self.pin.set_as_open_drain(esp_hal::gpio::Pull::None);
+        self.delay.delay_ms(200);
         self.pin.set_low();
-        self.delay.delay_ms(20);
+        self.delay.delay_ms(18);
         self.pin.set_high();
         self.delay.delay_us(40);
-        self.pin.set_input_enable(true);
+        self.pin.enable_input(true);
 
         let now = Instant::now();
 
         while self.pin.is_high() {
             if now.elapsed().as_millis() > TIMEOUT_DURATION {
-                // println!("wait for low timeout.");
                 return Err(SensorError::Timeout);
             }
         }
-
         if self.pin.is_low() {
             self.delay.delay_us(80);
             if self.pin.is_low() {
