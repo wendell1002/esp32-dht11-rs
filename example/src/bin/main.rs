@@ -13,7 +13,7 @@ fn main() -> ! {
     let delay = Delay::new();
 
     let mut dht11 = DHT11::new(peripherals.GPIO2, delay);
-
+    println!("开始读取");
     loop {
         match dht11.read() {
             Ok(m) => println!(
